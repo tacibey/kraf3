@@ -43,43 +43,77 @@ import Icon from "./icons/Icon.astro";
 </div>
 
 <script>
-  // Type alias for supported languages
-  type TLanguage = "en" | "fr";
-  // array of supported languages
-  const languages: TLanguage[] = ["en", "fr"];
+  // Type alias for supported languages (Keep this or import from ui.ts if defined there)
+  type TLanguage = "en" | "fr" | "es" | "ru"; // Include all supported languages
+
+  // Array of supported languages (Ensure this matches languages in ui.ts)
+  const languages: TLanguage[] = ["en", "fr", "es", "ru"];
 
   document.addEventListener("DOMContentLoaded", function () {
-    // Only target language picker links
-    const languageLinks = document.querySelectorAll(".hs-dropdown-menu[aria-labelledby='hs-dropdown-hover-event'] a");
-    
+    // Only target language picker links inside the dropdown
+    const languageLinks = document.querySelectorAll(
+      ".hs-dropdown-menu[aria-labelledby='hs-dropdown-default'] a" // More specific selector
+    );
+
     languageLinks.forEach((element) => {
       const link = element as HTMLAnchorElement;
-      const lang = link
-        .getAttribute("href")
-        ?.replace("/", "")
-        .replace("/", "") as TLanguage;
+
+      // Get the target language code from the link's href
+      const hrefLangMatch = link.getAttribute("href")?.match(/^\/([a-z]{2})\/?/);
+      const targetLang: TLanguage | string = hrefLangMatch ? hrefLangMatch[1] : "en"; // Default to 'en' if no prefix
 
       link.addEventListener("click", function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default link navigation
 
-        const url = new URL(window.location.href);
-        
-        const currentPath = url.pathname
-          .split("/")
-          .filter((part) => part && !languages.includes(part as TLanguage))
-          .join("/");
+        const currentUrl = new URL(window.location.href);
+        const pathParts = currentUrl.pathname.split("/").filter(part => part !== ""); // Get path parts, remove empty ones
 
-        let newPath = "";
-        if (lang && lang !== "en") {
-          newPath = `/${lang}/${currentPath}`;
+        let currentLang: TLanguage | null = null;
+        let pathWithoutLang = "";
+
+        // Check if the first part is a known language code
+        if (pathParts.length > 0 && languages.includes(pathParts[0] as TLanguage)) {
+          currentLang = pathParts[0] as TLanguage;
+          pathWithoutLang = "/" + pathParts.slice(1).join("/"); // Get the rest of the path
         } else {
-          newPath = `/${currentPath}`;
+          // If no language code found, assume default (English)
+          currentLang = "en";
+          pathWithoutLang = currentUrl.pathname; // Use the full path
         }
 
+        // Ensure pathWithoutLang always starts with a slash (unless it's just root "/")
+        if (pathWithoutLang !== "/" && !pathWithoutLang.startsWith("/")) {
+            pathWithoutLang = "/" + pathWithoutLang;
+        }
+         // Handle root path explicitly
+        if (pathWithoutLang === "//") {
+             pathWithoutLang = "/";
+        }
+
+
+        let newPath = "";
+        // Construct the new path with the target language prefix (unless it's the default 'en')
+        if (targetLang && targetLang !== "en") {
+          newPath = `/${targetLang}${pathWithoutLang}`;
+        } else {
+          // If target is 'en', just use the path without any prefix
+          newPath = pathWithoutLang;
+        }
+
+        // Normalize multiple slashes (e.g., // becomes /)
         newPath = newPath.replace(/\/+/g, "/");
+        // Ensure root path is handled correctly
         if (newPath === "") newPath = "/";
-        
-        window.location.href = `${url.origin}${newPath}${url.search}`;
+
+
+        // Construct the new full URL and navigate
+        const newUrl = `${currentUrl.origin}${newPath}${currentUrl.search}${currentUrl.hash}`;
+
+        // Only navigate if the URL has actually changed
+        if (newUrl !== window.location.href) {
+           window.location.href = newUrl;
+        }
+
       });
     });
   });
