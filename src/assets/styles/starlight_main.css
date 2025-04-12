@@ -6,13 +6,14 @@
     cursor: pointer;
   }
 }
-/* Dark mode colors. */
+
 :root {
-    --primary-button-hover: #ff801f;
+    --primary-button-hover: #f97316; /* Slightly darker orange for hover */
     --backdrop-color: #272727cc;
-    --sl-color-accent: #ff801f;
-    --sl-color-accent-high: #ffa057;
-    --sl-color-accent-low: #562800;
+    /* SL Starlight colors - already mostly orange, ensure they are desired shades */
+    --sl-color-accent: #f97316; /* Main accent orange */
+    --sl-color-accent-high: #fb923c; /* Lighter orange */
+    --sl-color-accent-low: #c2410c; /* Darker orange */
     --sl-color-black: #181818;
     --sl-color-gray-1: #eee;
     --sl-color-gray-2: #c2c2c2;
@@ -21,19 +22,21 @@
     --sl-color-gray-5: #383838;
     --sl-color-gray-6: #272727;
     --sl-color-white: #fff;
-    --yellow-hsl: 43.3, 96.4%, 56.3%;
-    --overlay-yellow: hsla(var(--yellow-hsl), .2);
+    /* -- Replaced Yellow with Orange HSL values -- */
+    --orange-hsl: 27.6, 94.5%, 53.1%; /* Adjusted HSL for a good orange */
+    --overlay-orange: hsla(var(--orange-hsl), .2); /* Use orange HSL */
     --border: hsla(var(--border-neutral), .4);
     --border-neutral: 0, 0%, 25.1%;
 }
 
-/* Light mode colors. */
+
 :root[data-theme='light'] {
-    --primary-button-hover: #ff801f;
+    --primary-button-hover: #ea580c; /* Slightly darker orange for light mode hover */
     --backdrop-color: #f6f6f699;
-    --sl-color-accent: #f76b15;
-    --sl-color-accent-high: #562800;
-    --sl-color-accent-low: #ffa057;
+    /* SL Starlight colors - set accent to orange for light theme */
+    --sl-color-accent: #ea580c; /* Main accent orange for light */
+    --sl-color-accent-high: #c2410c; /* Darker orange */
+    --sl-color-accent-low: #fed7aa; /* Lighter orange */
     --sl-color-black: #fff;
     --sl-color-gray-1: #272727;
     --sl-color-gray-2: #383838;
@@ -43,13 +46,16 @@
     --sl-color-gray-6: #eee;
     --sl-color-gray-7: #f6f6f6;
     --sl-color-white: #181818;
-    --yellow-hsl: 47.9, 95.8%, 53.1%;
-    --border-yellow: 54.9, 96.7%, 88%;
-    --border: hsla(var(--border-yellow), .4);
+    /* -- Replaced Yellow with Orange HSL values -- */
+    --orange-hsl: 27.6, 94.5%, 53.1%; /* Adjusted HSL for a good orange */
+    --overlay-orange: hsla(var(--orange-hsl), .2); /* Use orange HSL */
+    --border-orange: 30, 96%, 88%; /* Use an orange shade for border in light mode */
+    --border: hsla(var(--border-orange), .4); /* Use orange border */
 }
 
 .page {
-    background: linear-gradient(215deg, var(--overlay-yellow), transparent 40%), radial-gradient(var(--overlay-yellow), transparent 40%) no-repeat center center / cover, radial-gradient(var(--overlay-yellow), transparent 65%) no-repeat center center / cover;
+    /* -- Use overlay-orange instead of overlay-yellow -- */
+    background: linear-gradient(215deg, var(--overlay-orange), transparent 40%), radial-gradient(var(--overlay-orange), transparent 40%) no-repeat center center / cover, radial-gradient(var(--overlay-orange), transparent 65%) no-repeat center center / cover;
     background-blend-mode: overlay;
 }
 
@@ -84,6 +90,7 @@ select {
     box-shadow: none;
 }
 
+/* -- Ensure primary button hover uses the defined orange hover color -- */
 .sl-link-button.primary:hover {
     background-color: var(--primary-button-hover);
     transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
