@@ -1,0 +1,134 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import ClientsSection from "@components/sections/landing/ClientsSection.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
+import PricingSection from "@components/sections/pricing/PricingSection.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+
+// --- DİL DOSYASI IMPORTLARI (Adım 6'da oluşturulacak) ---
+import faqs from "@data/ru/faqs.json";
+import features from "@data/ru/features.json";
+import pricing from "@data/ru/pricing.json";
+// --- DİL DOSYASI IMPORTLARI SONU ---
+
+import heroImage from "@images/hero-image.avif";
+import featureImage from "@images/features-image.avif";
+import construction from "@images/construction-image.avif";
+import tools from "@images/automated-tools.avif";
+import dashboard from "@images/dashboard-image.avif";
+import { partnersData } from "@/data_files/constants";
+
+const avatarSrcs: Array<string> = [
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+];
+
+// --- SAYFA BAŞLIĞI ---
+const pageTitle: string = "Kraffe Roasters | Промышленные и коммерческие машины для обжарки кофе";
+---
+
+{/* --- DİL BELİRLEME --- */}
+<MainLayout lang="ru" title={pageTitle}>
+  <AnnouncementBanner
+    title="Свяжитесь с нами в Whatsapp!"
+    btnId="dismiss-button-ru"
+    btnTitle="Связаться в Whatsapp"
+    url="https://wa.link/ycj4x5"
+  />
+
+  <HeroSection
+    title=`Овладейте Искусством Обжарки: <span class="text-orange-500 dark:text-orange-400">Промышленные Ростеры Kraffe</span>`
+    subTitle="Раскройте исключительную стабильность вкуса и операционную эффективность с помощью искусно спроектированных коммерческих ростеров Kraffe. Созданы для долговечности, разработаны для точности, подкреплены пожизненной поддержкой."
+    primaryBtn="Исследуйте Наши Машины"
+    primaryBtnURL="/ru/products" {/* URL GÜNCELLENDİ */}
+    secondaryBtn="Запросить Консультацию"
+    secondaryBtnURL="/ru/contact" {/* URL GÜNCELLENDİ */}
+    withReview={true}
+    avatars={avatarSrcs}
+    rating=`<span class="font-bold">4.8</span> / 5`
+    starCount={4}
+    reviews=`Доверие <span class="font-bold">Обжарщиков</span> по всему миру`
+    src={heroImage}
+    alt="Детальный вид машины для обжарки кофе Kraffe"
+  />
+
+  <ClientsSection
+    title="Выбор Ведущих Обжарщиков Кофе и Кафе"
+    subTitle="Присоединяйтесь к числу компаний, достигающих совершенства в обжарке с Kraffe."
+    partners={partnersData}
+  />
+
+  <FeaturesGeneral
+    title="Спроектировано для Совершенства в Обжарке"
+    subTitle="Каждый ростер Kraffe тщательно разработан для беспрецедентного контроля, стабильности и эффективности, позволяя вам раскрыть полный потенциал каждого зерна."
+    src={featureImage}
+    alt="Крупный план компонентов ростера Kraffe"
+    features={features} {/* Bu @data/ru/features.json'dan gelecek */}
+  />
+
+  <FeaturesNavs
+    title=`Раскройте Пиковую Производительность: <span class="text-orange-500 dark:text-orange-400">Внутри Ростера Kraffe</span>` {/* SPAN RENGİ ORANGE OLARAK GÜNCELLENDİ */}
+    tabs={[
+      {
+        heading: "Продвинутый Термоконтроль",
+        content: "Овладейте передачей тепла с нашими барабанами с двойными стенками, превосходной изоляцией и прочными чугунными передними панелями.",
+        svg: "tools",
+        src: tools,
+        alt: "Деталь барабана ростера Kraffe",
+        first: true,
+      },
+      {
+        heading: "Система Точной Обжарки",
+        content: "Настройте совершенство. Модулированные премикс-горелки, переменный воздушный поток и регулируемая скорость барабана дают вам полный контроль над профилем обжарки.",
+        svg: "dashboard",
+        src: dashboard,
+        alt: "Крупный план панели управления ростера Kraffe",
+        second: true,
+      },
+      {
+        heading: "Интеграция с Умной Обжарочной",
+        content: "Оптимизируйте свой рабочий процесс. Наши машины легко интегрируются с Cropster и Artisan, дополняясь нашим бесплатным ПО для повторения профилей.",
+        svg: "house",
+        src: construction,
+        alt: "Ростер Kraffe, интегрированный в обстановку кафе",
+      },
+    ]}
+  />
+
+  <TestimonialsSection
+    title="Нам Доверяют Профессиональные Обжарщики"
+    subTitle="Узнайте, почему ведущие обжарочные цеха выбирают Kraffe за качество, стабильность и поддержку."
+    testimonials={[
+      {
+        content: "Машина невероятно удобна в использовании и каждый раз обеспечивает стабильные результаты. Процесс обжарки эффективен и точен, что позволяет мне достичь идеальной обжарки для моих кофейных зерен.",
+        author: "Amir Montezar",
+        role: "Etude Coffee Co.",
+        avatarSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+      },
+    ]}
+    statistics={[
+      { count: "100%", description: "Гарантия Качества: Строгий контроль качества каждой машины перед отправкой." },
+      { count: "Индивидуально", description: "Ориентация на Решение: Гибкий подход к дизайну для удовлетворения ваших конкретных потребностей обжарки." },
+      { count: "Глобально", description: "Устойчивость: Простое обслуживание благодаря компонентам всемирно известных брендов." },
+      { count: "7/24", description: "Пожизненная Поддержка: Выделенная пожизненная поддержка от нашей команды, ориентированной на решение." },
+    ]}
+  />
+
+  <PricingSection pricing={pricing} /> {/* Bu @data/ru/pricing.json'dan gelecek */}
+
+  <FAQ title="Часто Задаваемые<br />Вопросы" faqs={faqs} /> {/* Bu @data/ru/faqs.json'dan gelecek */}
+
+  <HeroSectionAlt
+    title="Готовы Усовершенствовать Свою Обжарку?"
+    subTitle="Свяжитесь с нашими экспертами сегодня, чтобы обсудить ваши потребности и найти идеальный ростер Kraffe для вашего бизнеса."
+    url="/ru/contact" {/* URL GÜNCELLENDİ */}
+  />
+</MainLayout>
