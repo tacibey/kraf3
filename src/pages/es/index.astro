@@ -11,11 +11,11 @@ import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 
-// --- DİL DOSYASI IMPORTLARI (Adım 6'da oluşturulacak) ---
-import faqs from "@data/es/faqs.json";
-import features from "@data/es/features.json";
-import pricing from "@data/es/pricing.json";
-// --- DİL DOSYASI IMPORTLARI SONU ---
+// --- GEÇİCİ DÜZELTME: İngilizce veri dosyalarını import et ---
+import faqs from "@data/faqs.json";
+import features from "@data/features.json";
+import pricing from "@data/pricing.json";
+// --- GEÇİCİ DÜZELTME SONU ---
 
 import heroImage from "@images/hero-image.avif";
 import featureImage from "@images/features-image.avif";
@@ -31,11 +31,10 @@ const avatarSrcs: Array<string> = [
   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
 ];
 
-// --- SAYFA BAŞLIĞI ---
 const pageTitle: string = "Kraffe Roasters | Máquinas Tostadoras de Café Industriales y Comerciales";
 ---
 
-{/* --- DİL BELİRLEME --- */}
+{/* DİLİ BELİRT: lang="es" */}
 <MainLayout lang="es" title={pageTitle}>
   <AnnouncementBanner
     title="¡Contáctanos en Whatsapp!"
@@ -48,9 +47,9 @@ const pageTitle: string = "Kraffe Roasters | Máquinas Tostadoras de Café Indus
     title=`Domina el Arte del Tostado: <span class="text-orange-500 dark:text-orange-400">Máquinas Industriales Kraffe</span>`
     subTitle="Desbloquea una consistencia de sabor excepcional y eficiencia operativa con las tostadoras de café comerciales Kraffe, diseñadas por expertos. Construidas para durar, diseñadas para la precisión, respaldadas por soporte de por vida."
     primaryBtn="Explora Nuestras Máquinas"
-    primaryBtnURL="/es/products" {/* URL GÜNCELLENDİ */}
+    primaryBtnURL="/es/products" {/* URL DÜZGÜN */}
     secondaryBtn="Solicita una Consulta"
-    secondaryBtnURL="/es/contact" {/* URL GÜNCELLENDİ */}
+    secondaryBtnURL="/es/contact" {/* URL DÜZGÜN */}
     withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">4.8</span> / 5`
@@ -66,16 +65,17 @@ const pageTitle: string = "Kraffe Roasters | Máquinas Tostadoras de Café Indus
     partners={partnersData}
   />
 
+  {/* Özellikler şimdilik İngilizce JSON'dan gelecek */}
   <FeaturesGeneral
     title="Diseñado para la Excelencia en el Tostado"
     subTitle="Cada tostadora Kraffe está meticulosamente diseñada para un control, consistencia y eficiencia incomparables, permitiéndote desbloquear todo el potencial de cada grano."
     src={featureImage}
     alt="Primer plano de los componentes de la tostadora de café Kraffe"
-    features={features} {/* Bu @data/es/features.json'dan gelecek */}
+    features={features} {/* İngilizce veriyi kullanacak */}
   />
 
   <FeaturesNavs
-    title=`Desbloquea el Máximo Rendimiento: <span class="text-orange-500 dark:text-orange-400">Dentro de la Tostadora Kraffe</span>` {/* SPAN RENGİ ORANGE OLARAK GÜNCELLENDİ */}
+    title=`Desbloquea el Máximo Rendimiento: <span class="text-orange-500 dark:text-orange-400">Dentro de la Tostadora Kraffe</span>`
     tabs={[
       {
         heading: "Control Térmico Avanzado",
@@ -122,13 +122,15 @@ const pageTitle: string = "Kraffe Roasters | Máquinas Tostadoras de Café Indus
     ]}
   />
 
-  <PricingSection pricing={pricing} /> {/* Bu @data/es/pricing.json'dan gelecek */}
+  {/* Fiyatlandırma şimdilik İngilizce JSON'dan gelecek */}
+  <PricingSection pricing={pricing} /> {/* İngilizce veriyi kullanacak */}
 
-  <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} /> {/* Bu @data/es/faqs.json'dan gelecek */}
+  {/* SSS şimdilik İngilizce JSON'dan gelecek */}
+  <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} /> {/* İngilizce veriyi kullanacak */}
 
   <HeroSectionAlt
     title="¿Listo para Perfeccionar tu Tueste?"
     subTitle="Conéctate con nuestros expertos hoy para discutir tus necesidades y descubrir la tostadora Kraffe ideal para tu negocio."
-    url="/es/contact" {/* URL GÜNCELLENDİ */}
+    url="/es/contact" {/* URL DÜZGÜN */}
   />
 </MainLayout>
