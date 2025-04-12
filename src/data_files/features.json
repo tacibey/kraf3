@@ -1,22 +1,22 @@
 [
   {
-    "heading": "Dedicated Teams",
-    "content": "Benefit from our committed teams who ensure your success is personal. Count on expert guidance and exceptional results throughout your project journey.",
-    "svg": "groups"
+    "heading": "Precision Control",
+    "content": "Achieve your perfect profile with precise controls for air flow, drum speed, and our advanced modulated premix burner.",
+    "svg": "verified" 
   },
   {
-    "heading": "Simplicity and Affordability",
-    "content": "Find easy-to-use, affordable solutions with ScrewFast's line of tools and equipment. Our products make procurement simple and keep projects within budget.",
-    "svg": "verified"
+    "heading": "Unmatched Consistency",
+    "content": "Rely on superior thermal stability thanks to our double-walled drums and high-insulation design, backed by free profile repeating software.",
+    "svg": "frame" 
   },
   {
-    "heading": "Comprehensive Documentation",
-    "content": "Integrate with ease using ScrewFast's exhaustive guides and libraries. Achieve seamless product adoption with our full suite of documentation designed for your success.",
-    "svg": "books"
+    "heading": "Durable Craftsmanship, Easy Maintenance",
+    "content": "Built with high-quality cast iron and globally recognized components for long-lasting performance and simple upkeep.",
+    "svg": "tools" 
   },
   {
-    "heading": "User-Centric Design",
-    "content": "Experience the difference with ScrewFast's user-focused design — where functionality meets practicality for an enhanced work experience.",
-    "svg": "frame"
+    "heading": "Integrated & Supported",
+    "content": "Fully compatible with Cropster & Artisan, customizable to your needs, and backed by our dedicated 7/24 support team.",
+    "svg": "groups" 
   }
 ]
