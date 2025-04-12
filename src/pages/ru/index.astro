@@ -11,11 +11,11 @@ import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 
-// --- DİL DOSYASI IMPORTLARI (Adım 6'da oluşturulacak) ---
-import faqs from "@data/ru/faqs.json";
-import features from "@data/ru/features.json";
-import pricing from "@data/ru/pricing.json";
-// --- DİL DOSYASI IMPORTLARI SONU ---
+// --- GEÇİCİ DÜZELTME: İngilizce veri dosyalarını import et ---
+import faqs from "@data/faqs.json";
+import features from "@data/features.json";
+import pricing from "@data/pricing.json";
+// --- GEÇİCİ DÜZELTME SONU ---
 
 import heroImage from "@images/hero-image.avif";
 import featureImage from "@images/features-image.avif";
@@ -31,11 +31,10 @@ const avatarSrcs: Array<string> = [
   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
 ];
 
-// --- SAYFA BAŞLIĞI ---
 const pageTitle: string = "Kraffe Roasters | Промышленные и коммерческие машины для обжарки кофе";
 ---
 
-{/* --- DİL BELİRLEME --- */}
+{/* DİLİ BELİRT: lang="ru" */}
 <MainLayout lang="ru" title={pageTitle}>
   <AnnouncementBanner
     title="Свяжитесь с нами в Whatsapp!"
@@ -48,9 +47,9 @@ const pageTitle: string = "Kraffe Roasters | Промышленные и ком�
     title=`Овладейте Искусством Обжарки: <span class="text-orange-500 dark:text-orange-400">Промышленные Ростеры Kraffe</span>`
     subTitle="Раскройте исключительную стабильность вкуса и операционную эффективность с помощью искусно спроектированных коммерческих ростеров Kraffe. Созданы для долговечности, разработаны для точности, подкреплены пожизненной поддержкой."
     primaryBtn="Исследуйте Наши Машины"
-    primaryBtnURL="/ru/products" {/* URL GÜNCELLENDİ */}
+    primaryBtnURL="/ru/products" {/* URL DÜZGÜN */}
     secondaryBtn="Запросить Консультацию"
-    secondaryBtnURL="/ru/contact" {/* URL GÜNCELLENDİ */}
+    secondaryBtnURL="/ru/contact" {/* URL DÜZGÜN */}
     withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">4.8</span> / 5`
@@ -66,16 +65,17 @@ const pageTitle: string = "Kraffe Roasters | Промышленные и ком�
     partners={partnersData}
   />
 
+  {/* Özellikler şimdilik İngilizce JSON'dan gelecek */}
   <FeaturesGeneral
     title="Спроектировано для Совершенства в Обжарке"
     subTitle="Каждый ростер Kraffe тщательно разработан для беспрецедентного контроля, стабильности и эффективности, позволяя вам раскрыть полный потенциал каждого зерна."
     src={featureImage}
     alt="Крупный план компонентов ростера Kraffe"
-    features={features} {/* Bu @data/ru/features.json'dan gelecek */}
+    features={features} {/* İngilizce veriyi kullanacak */}
   />
 
   <FeaturesNavs
-    title=`Раскройте Пиковую Производительность: <span class="text-orange-500 dark:text-orange-400">Внутри Ростера Kraffe</span>` {/* SPAN RENGİ ORANGE OLARAK GÜNCELLENDİ */}
+    title=`Раскройте Пиковую Производительность: <span class="text-orange-500 dark:text-orange-400">Внутри Ростера Kraffe</span>`
     tabs={[
       {
         heading: "Продвинутый Термоконтроль",
@@ -122,13 +122,15 @@ const pageTitle: string = "Kraffe Roasters | Промышленные и ком�
     ]}
   />
 
-  <PricingSection pricing={pricing} /> {/* Bu @data/ru/pricing.json'dan gelecek */}
+  {/* Fiyatlandırma şimdilik İngilizce JSON'dan gelecek */}
+  <PricingSection pricing={pricing} /> {/* İngilizce veriyi kullanacak */}
 
-  <FAQ title="Часто Задаваемые<br />Вопросы" faqs={faqs} /> {/* Bu @data/ru/faqs.json'dan gelecek */}
+  {/* SSS şimdilik İngilizce JSON'dan gelecek */}
+  <FAQ title="Часто Задаваемые<br />Вопросы" faqs={faqs} /> {/* İngilizce veriyi kullanacak */}
 
   <HeroSectionAlt
     title="Готовы Усовершенствовать Свою Обжарку?"
     subTitle="Свяжитесь с нашими экспертами сегодня, чтобы обсудить ваши потребности и найти идеальный ростер Kraffe для вашего бизнеса."
-    url="/ru/contact" {/* URL GÜNCELLENDİ */}
+    url="/ru/contact" {/* URL DÜZGÜN */}
   />
 </MainLayout>
