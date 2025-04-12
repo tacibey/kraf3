@@ -1,38 +1,39 @@
 {
-  "title": "Simple, Transparent Pricing",
-  "subTitle": "Boost efficiency with ScrewFast's clear, value-driven plans.",
-  "badge": "Best value",
-  "thirdOption": "Enterprise Solutions?",
-  "btnText": "Get a Custom Quote",
+  "title": "Transparent Pricing for Professional Roasters",
+  "subTitle": "Choose the Kraffe machine that scales with your ambition.",
+  "badge": "Popular Choice",
+  "thirdOption": "Need Custom Solutions or Higher Capacity?",
+  "btnText": "Get an Enterprise Quote",
 
   "starterKit": {
-    "name": "Starter Kit",
-    "description": "Best option for DIY projects",
-    "price": "49",
-    "cents": ".00",
-    "billingFrequency": "USD / monthly",
+    "name": "Kraffe KRF-S Series",
+    "description": "Ideal for Boutique Cafes & Entry-Level Roasteries",
+    "price": "Request",
+    "cents": " Quote",
+    "billingFrequency": "",
     "features": [
-      "Key hardware tools",
-      "Access to guides & tutorials",
-      "Standard support"
+      "Essential Roasting Controls",
+      "Double-Walled Drum",
+      "Basic Software Integration",
+      "Standard Support"
     ],
-    "purchaseBtnTitle": "Get the Starter Kit",
-    "purchaseLink": "#"
+    "purchaseBtnTitle": "Request Quote",
+    "purchaseLink": "/contact" 
   },
 
   "professionalToolbox": {
-    "name": "Professional Toolbox",
-    "description": "Best for large scale uses",
-    "price": "89",
-    "cents": ".00",
-    "billingFrequency": "USD / monthly",
+    "name": "Kraffe KRF-I Series",
+    "description": "For High-Volume Production & Industrial Use",
+    "price": "Request",
+    "cents": " Quote",
+    "billingFrequency": "",
     "features": [
-      "Premium tool selection",
-      "Priority support",
-      "Exclusive content & deals",
-      "Bulk order discounts"
+      "Advanced Automation Options",
+      "All Essential Features",
+      "Priority 7/24 Support",
+      "Extended Component Warranty"
     ],
-    "purchaseBtnTitle": "Get the Professional Toolbox",
-    "purchaseLink": "#"
+    "purchaseBtnTitle": "Request Quote",
+    "purchaseLink": "/contact" 
   }
 }
