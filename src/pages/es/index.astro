@@ -1,0 +1,134 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
+import ClientsSection from "@components/sections/landing/ClientsSection.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
+import PricingSection from "@components/sections/pricing/PricingSection.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+
+// --- DİL DOSYASI IMPORTLARI (Adım 6'da oluşturulacak) ---
+import faqs from "@data/es/faqs.json";
+import features from "@data/es/features.json";
+import pricing from "@data/es/pricing.json";
+// --- DİL DOSYASI IMPORTLARI SONU ---
+
+import heroImage from "@images/hero-image.avif";
+import featureImage from "@images/features-image.avif";
+import construction from "@images/construction-image.avif";
+import tools from "@images/automated-tools.avif";
+import dashboard from "@images/dashboard-image.avif";
+import { partnersData } from "@/data_files/constants";
+
+const avatarSrcs: Array<string> = [
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+];
+
+// --- SAYFA BAŞLIĞI ---
+const pageTitle: string = "Kraffe Roasters | Máquinas Tostadoras de Café Industriales y Comerciales";
+---
+
+{/* --- DİL BELİRLEME --- */}
+<MainLayout lang="es" title={pageTitle}>
+  <AnnouncementBanner
+    title="¡Contáctanos en Whatsapp!"
+    btnId="dismiss-button-es"
+    btnTitle="Contactar por Whatsapp"
+    url="https://wa.link/ycj4x5"
+  />
+
+  <HeroSection
+    title=`Domina el Arte del Tostado: <span class="text-orange-500 dark:text-orange-400">Máquinas Industriales Kraffe</span>`
+    subTitle="Desbloquea una consistencia de sabor excepcional y eficiencia operativa con las tostadoras de café comerciales Kraffe, diseñadas por expertos. Construidas para durar, diseñadas para la precisión, respaldadas por soporte de por vida."
+    primaryBtn="Explora Nuestras Máquinas"
+    primaryBtnURL="/es/products" {/* URL GÜNCELLENDİ */}
+    secondaryBtn="Solicita una Consulta"
+    secondaryBtnURL="/es/contact" {/* URL GÜNCELLENDİ */}
+    withReview={true}
+    avatars={avatarSrcs}
+    rating=`<span class="font-bold">4.8</span> / 5`
+    starCount={4}
+    reviews=`Con la confianza de <span class="font-bold">Tostadurías</span> de todo el mundo`
+    src={heroImage}
+    alt="Vista detallada de una máquina tostadora de café Kraffe"
+  />
+
+  <ClientsSection
+    title="La Elección de Tostadores y Cafeterías Líderes"
+    subTitle="Únete a las filas de negocios que logran la excelencia en el tostado con Kraffe."
+    partners={partnersData}
+  />
+
+  <FeaturesGeneral
+    title="Diseñado para la Excelencia en el Tostado"
+    subTitle="Cada tostadora Kraffe está meticulosamente diseñada para un control, consistencia y eficiencia incomparables, permitiéndote desbloquear todo el potencial de cada grano."
+    src={featureImage}
+    alt="Primer plano de los componentes de la tostadora de café Kraffe"
+    features={features} {/* Bu @data/es/features.json'dan gelecek */}
+  />
+
+  <FeaturesNavs
+    title=`Desbloquea el Máximo Rendimiento: <span class="text-orange-500 dark:text-orange-400">Dentro de la Tostadora Kraffe</span>` {/* SPAN RENGİ ORANGE OLARAK GÜNCELLENDİ */}
+    tabs={[
+      {
+        heading: "Control Térmico Avanzado",
+        content: "Domina la transferencia de calor con nuestros tambores de doble pared, aislamiento superior y robustas placas frontales de hierro fundido.",
+        svg: "tools",
+        src: tools,
+        alt: "Detalle del tambor de la tostadora Kraffe",
+        first: true,
+      },
+      {
+        heading: "Sistema de Tostado de Precisión",
+        content: "Ajusta la perfección. Los quemadores premezclados modulados, el flujo de aire variable y la velocidad ajustable del tambor te brindan el control definitivo sobre el perfil de tostado.",
+        svg: "dashboard",
+        src: dashboard,
+        alt: "Primer plano del panel de control de la tostadora Kraffe",
+        second: true,
+      },
+      {
+        heading: "Integración Inteligente de Tostaduría",
+        content: "Optimiza tu flujo de trabajo. Nuestras máquinas se integran perfectamente con Cropster y Artisan, complementadas con nuestro software gratuito de repetición de perfiles.",
+        svg: "house",
+        src: construction,
+        alt: "Tostadora Kraffe integrada en un entorno de cafetería",
+      },
+    ]}
+  />
+
+  <TestimonialsSection
+    title="Con la Confianza de Tostadores Profesionales"
+    subTitle="Escucha por qué las principales tostadurías eligen Kraffe por su calidad, consistencia y soporte."
+    testimonials={[
+      {
+        content: "La máquina es increíblemente fácil de usar y ofrece resultados consistentes cada vez. El proceso de tostado es eficiente y preciso, permitiéndome lograr el tueste perfecto para mis granos de café.",
+        author: "Amir Montezar",
+        role: "Etude Coffee Co.",
+        avatarSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+      },
+    ]}
+    statistics={[
+      { count: "100%", description: "Garantía de Calidad: Riguroso control de calidad en cada máquina antes del envío." },
+      { count: "A Medida", description: "Orientado a Soluciones: Enfoque de diseño flexible para satisfacer sus necesidades específicas de tostaduría." },
+      { count: "Global", description: "Sostenibilidad: Fácil mantenimiento con componentes de marcas reconocidas mundialmente." },
+      { count: "7/24", description: "Soporte Vitalicio: Soporte vitalicio dedicado de nuestro equipo orientado a soluciones." },
+    ]}
+  />
+
+  <PricingSection pricing={pricing} /> {/* Bu @data/es/pricing.json'dan gelecek */}
+
+  <FAQ title="Preguntas<br />Frecuentes" faqs={faqs} /> {/* Bu @data/es/faqs.json'dan gelecek */}
+
+  <HeroSectionAlt
+    title="¿Listo para Perfeccionar tu Tueste?"
+    subTitle="Conéctate con nuestros expertos hoy para discutir tus necesidades y descubrir la tostadora Kraffe ideal para tu negocio."
+    url="/es/contact" {/* URL GÜNCELLENDİ */}
+  />
+</MainLayout>
