@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Premium Coffee Roasters & Equipment", // Short tagline
   description: "Kraffe Roasters offers expertly roasted coffee beans and high-quality roasting equipment for cafes and enthusiasts. Discover precision and durability in commercial & industrial coffee roasting machines.", // Main site description
   description_short: "Premium commercial coffee roasting machines and equipment by Kraffe Roasters.", // Short description
-  url: "https://kraffe.com", // REPLACE WITH YOUR ACTUAL SITE URL
+  url: "https://krafferoasters.com", // REPLACE WITH YOUR ACTUAL SITE URL
   author: "Kraffe Roasters Team", // Author or company name
 };
 
