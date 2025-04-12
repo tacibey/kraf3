@@ -10,138 +10,127 @@ import TestimonialsSection from "@components/sections/testimonials/TestimonialsS
 import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
-import heroImage from "@images/hero-image.avif";
+
+// --- DİL DOSYASI IMPORTLARI (Adım 6'da oluşturulacak) ---
 import faqs from "@data/fr/faqs.json";
 import features from "@data/fr/features.json";
 import pricing from "@data/fr/pricing.json";
+// --- DİL DOSYASI IMPORTLARI SONU ---
+
+// Görsel ve partner importları (İngilizce ile aynı kalabilir)
+import heroImage from "@images/hero-image.avif";
 import featureImage from "@images/features-image.avif";
 import construction from "@images/construction-image.avif";
 import tools from "@images/automated-tools.avif";
 import dashboard from "@images/dashboard-image.avif";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { partnersData } from "@/data_files/constants";
+import { partnersData } from "@/data_files/constants"; // Merkezi partner verisi
 
+// Avatar URL'leri (Genellikle çevrilmez)
 const avatarSrcs: Array<string> = [
   "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
   "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
   "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
 ];
+
+// --- SAYFA BAŞLIĞI ---
+const pageTitle: string = "Kraffe Roasters | Machines à Torréfier Industrielles et Commerciales";
 ---
 
-<MainLayout lang="fr">
+{/* --- DİL BELİRLEME --- */}
+<MainLayout lang="fr" title={pageTitle}>
   <AnnouncementBanner
-    btnId="dismiss-button"
-    btnTitle="Découvrez ScrewFast sur GitHub"
-    url="https://github.com/mearashadowfax/ScrewFast"
+    title="Contactez-nous sur Whatsapp !" {/* Örnek çeviri, isterseniz İngilizce bırakın veya farklı yapın */}
+    btnId="dismiss-button-fr"
+    btnTitle="Contacter sur Whatsapp" {/* Örnek çeviri */}
+    url="https://wa.link/ycj4x5" {/* Whatsapp linki aynı kalır */}
   />
 
   <HeroSection
-    title=`Équipez vos projets avec <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>`
-    subTitle="Outils matériels de haute qualité et services de construction experts pour tous les besoins en projet."
-    primaryBtn="Commencez à explorer"
-    primaryBtnURL={getRelativeLocaleUrl("fr", "products")}
-    secondaryBtn="Contacter l'équipe commerciale"
-    secondaryBtnURL={getRelativeLocaleUrl("fr", "contact")}
+    title=`Maîtrisez l'Art de la Torréfaction : <span class="text-orange-500 dark:text-orange-400">Machines Industrielles Kraffe</span>`
+    subTitle="Débloquez une constance de saveur exceptionnelle et une efficacité opérationnelle avec les torréfacteurs commerciaux Kraffe, conçus par des experts. Fabriqués pour la durabilité, conçus pour la précision, soutenus par une assistance à vie."
+    primaryBtn="Découvrez Nos Machines"
+    primaryBtnURL="/fr/products" {/* URL GÜNCELLENDİ */}
+    secondaryBtn="Demander une Consultation"
+    secondaryBtnURL="/fr/contact" {/* URL GÜNCELLENDİ */}
     withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">4.8</span> / 5`
     starCount={4}
-    reviews=`À partir de plus de <span class="font-bold">12,8k</span> avis`
+    reviews=`Approuvé par les <span class="font-bold">Torréfacteurs</span> du Monde Entier`
     src={heroImage}
-    alt="Pile de boîtes de produits ScrewFast contenant des outils matériels assortis"
+    alt="Vue détaillée d'une machine à torréfier Kraffe"
   />
 
   <ClientsSection
-    title="Faites confiance aux leaders de l'industrie"
-    subTitle="Découvrez la fiabilité choisie par les géants de l'industrie."
+    title="Le Choix des Principaux Torréfacteurs & Cafés"
+    subTitle="Rejoignez les entreprises qui atteignent l'excellence en torréfaction avec Kraffe."
     partners={partnersData}
   />
 
   <FeaturesGeneral
-    title="Répondre aux exigences de l'industrie"
-    subTitle="Chez ScrewFast, nous relevons les défis uniques rencontrés dans les secteurs du matériel et de la construction. Des outils de pointe aux services experts, nous sommes déterminés à vous aider à surmonter les obstacles et à atteindre vos objectifs."
+    title="Conçu pour l'Excellence en Torréfaction"
+    subTitle="Chaque torréfacteur Kraffe est méticuleusement conçu pour un contrôle, une constance et une efficacité inégalés, vous permettant de libérer tout le potentiel de chaque grain."
     src={featureImage}
-    alt="Produits ScrewFast dans des boîtes flottantes"
-    features={features}
+    alt="Gros plan des composants du torréfacteur Kraffe"
+    features={features} {/* Bu @data/fr/features.json'dan gelecek */}
   />
 
   <FeaturesNavs
-    title=`Personnalisez les offres de <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span> pour répondre parfaitement à vos besoins en matériel et en construction.`
+    title=`Libérez la Performance Maximale : <span class="text-orange-500 dark:text-orange-400">À l'Intérieur du Torréfacteur Kraffe</span>` {/* SPAN RENGİ ORANGE OLARAK GÜNCELLENDİ */}
     tabs={[
       {
-        heading: "Outils de pointe",
-        content:
-          "Optimisez vos projets avec les outils de pointe de ScrewFast. Faites l'expérience d'une efficacité accrue dans la gestion de la construction avec nos solutions automatisées sophistiquées.",
+        heading: "Contrôle Thermique Avancé",
+        content: "Maîtrisez le transfert de chaleur avec nos tambours à double paroi, une isolation supérieure et des plaques avant robustes en fonte.",
         svg: "tools",
         src: tools,
-        alt: "Équipement lourd jaune et noir sur un champ d'herbe brune",
+        alt: "Détail du tambour du torréfacteur Kraffe",
         first: true,
       },
       {
-        heading: "Tableaux de bord intuitifs",
-        content:
-          "Naviguez facilement avec les tableaux de bord intuitifs de ScrewFast. Configurez et supervisez vos projets de manière transparente, avec des interfaces conviviales conçues pour une gestion efficace des flux de travail rapide et efficace.",
+        heading: "Système de Torréfaction de Précision",
+        content: "Réglez la perfection. Les brûleurs pré-mélangés modulés, le débit d'air variable et la vitesse de tambour réglable vous donnent un contrôle ultime sur le profil de torréfaction.",
         svg: "dashboard",
         src: dashboard,
-        alt: "Capture d'écran ou représentation graphique du tableau de bord intuitif",
+        alt: "Gros plan du panneau de contrôle du torréfacteur Kraffe",
         second: true,
       },
       {
-        heading: "Fonctionnalités robustes",
-        content:
-          "Minimisez la complexité, maximisez la productivité. Les fonctionnalités robustes de ScrewFast sont conçues pour rationaliser votre processus de construction, offrant des résultats qui se distinguent par leur excellence.",
+        heading: "Intégration Intelligente à la Torréfaction",
+        content: "Rationalisez votre flux de travail. Nos machines s'intègrent parfaitement à Cropster et Artisan, complétées par notre logiciel gratuit de répétition de profil.",
         svg: "house",
         src: construction,
-        alt: "Structure métallique grise d'un bâtiment près d'une grue à tour pendant la journée",
+        alt: "Torréfacteur Kraffe intégré dans un café",
       },
     ]}
   />
 
   <TestimonialsSection
-    title="Accélérez vos projets"
-    subTitle="Chez ScrewFast, nous assurons un démarrage rapide avec une configuration de compte instantanée. Découvrez la vitesse de la construction redéfinie."
+    title="Approuvé par les Torréfacteurs Professionnels"
+    subTitle="Découvrez pourquoi les principales torréfactions choisissent Kraffe pour la qualité, la constance et le support."
     testimonials={[
       {
-        content:
-          "ScrewFast a considérablement augmenté l'efficacité de notre projet. La configuration a été instantanée et leurs temps de réponse rapides sont phénoménaux. Vraiment un changement de jeu dans le support matériel et de construction !",
-        author: "Samantha Ruiz",
-        role: "Directrice des opérations | ConstructIt Inc.",
-        avatarSrc:
-          "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+        content: "La machine est incroyablement conviviale et donne des résultats constants à chaque fois. Le processus de torréfaction est efficace et précis, me permettant d'obtenir la torréfaction parfaite pour mes grains de café.",
+        author: "Amir Montezar",
+        role: "Etude Coffee Co.",
+        avatarSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
       },
     ]}
     statistics={[
-      {
-        count: "70k+",
-        description:
-          "clients équipés — des bricoleurs aux grandes entreprises de construction",
-      },
-      {
-        count: "35%",
-        description:
-          "hausse de l'efficacité des projets avec les outils et services de ScrewFast",
-      },
-      {
-        count: "15,3%",
-        description:
-          "réduction des coûts de maintenance rapportée par des clients à long terme",
-      },
-      {
-        count: "2x",
-        description:
-          "assemblage plus rapide grâce à des solutions de fixation innovantes",
-      },
+      { count: "100%", description: "Assurance Qualité : Contrôle qualité rigoureux sur chaque machine avant expédition." },
+      { count: "Sur Mesure", description: "Orienté Solution : Approche de conception flexible pour répondre à vos besoins spécifiques de torréfaction." },
+      { count: "Global", description: "Durabilité : Maintenance facile avec des composants de marques mondialement reconnues." },
+      { count: "7/24", description: "Support à Vie : Support dédié à vie de notre équipe axée sur les solutions." },
     ]}
   />
 
-  <PricingSection pricing={pricing} />
+  <PricingSection pricing={pricing} /> {/* Bu @data/fr/pricing.json'dan gelecek */}
 
-  <FAQ title="Questions<br />fréquemment posées" faqs={faqs} />
+  <FAQ title="Questions<br />Fréquemment Posées" faqs={faqs} /> {/* Bu @data/fr/faqs.json'dan gelecek */}
 
   <HeroSectionAlt
-    title="Construisons ensemble"
-    subTitle="ScrewFast est un modèle open source, méticuleusement conçu avec les frameworks Astro, Tailwind CSS et Preline UI."
-    url="https://github.com/mearashadowfax/ScrewFast"
+    title="Prêt à Perfectionner Votre Torréfaction ?"
+    subTitle="Contactez nos experts dès aujourd'hui pour discuter de vos besoins et découvrir la solution Kraffe idéale pour votre entreprise."
+    url="/fr/contact" {/* URL GÜNCELLENDİ */}
   />
 </MainLayout>
